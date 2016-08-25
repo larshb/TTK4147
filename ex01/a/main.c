@@ -8,10 +8,9 @@ void allocate(int value) {
     printf("test of allocated memory: %i\n");
 }
 
-int main2() {
+int main() {
 
-    // A
-    //while(1) allocate(3);
+    while(1) allocate(3);
 
     return 0;
 }
