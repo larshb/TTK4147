@@ -1,10 +1,21 @@
 # Exercise 1: Memory, Errors and Time
 
-### Assignment A:
+## Approval
+
+
+
+## Notes
+
+#### Assignment A:
 The `allocate()` function leaks memory.
 
-### Assignment B:
+#### Assignment B:
 See [linked_list](/linked_list).
 
-### Assignment C:
+#### Assignment C:
 See [allocate.c](allocate.c).
+
+#### Assignment D:
+Using `sleep` the program runs solely on 5s "real time", whereas the `busy wait delay` runs at 5s "user time" with around 4.5s "real time" and .5s "sys time".
+
+(...)
