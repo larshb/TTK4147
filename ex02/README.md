@@ -2,7 +2,7 @@
 
 ## Approval
 
-Run the TA-script
+Run the TA-script.
 
     ./ta.sh
 
@@ -22,4 +22,4 @@ The variables do not always have the same value because the print thread might p
 
 #### Assignment E:
 
-The problem was solved by using semaphores. (See the `//`-marks in [the code](din_philo.c).)
+The problem was solved by using semaphores. (See the `//`-marks in [the code](din_philo.c))
