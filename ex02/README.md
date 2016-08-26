@@ -1,5 +1,11 @@
 # Exercise 2: Concurrency
 
+## Approval
+
+Run the TA-script
+
+    ./ta.sh
+
 ## Notes
 
 #### Assignment A:
