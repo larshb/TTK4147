@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 clear
 cat lars.nfo
 echo
@@ -15,7 +15,8 @@ make clean
 cd ..
 clear
 gcc -o allocate allocate.c
-#./allocate
+clear
+timeout 5 ./allocate
 echo
 echo " * When I tried to write to the variable when not checking the return value from malloc() I risked attempting to write to the NULL pointer."
 echo
@@ -23,8 +24,8 @@ read -p "Press ENTER to continue..."
 rm allocate
 clear
 cd timing
-gcc -o a sleep.c
-gcc -o b busy_wait_delay.c
+gcc -pthread -o a sleep.c
+gcc -pthread -o b busy_wait_delay.c
 clear
 echo "Using sleep:"
 time ./a
