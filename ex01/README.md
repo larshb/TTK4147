@@ -2,7 +2,9 @@
 
 ## Approval
 
+Run the TA-script
 
+    ./ta.sh
 
 ## Notes
 
