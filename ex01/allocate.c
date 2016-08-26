@@ -8,7 +8,7 @@ void allocate(int value) {
     // Assignment C:
     if (ptr == NULL) {
         perror("Error in allocate: ");
-        return;
+        exit(1);
     }
 
     *ptr = value;
