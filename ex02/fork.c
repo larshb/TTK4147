@@ -3,10 +3,13 @@
 
 int glo = 0;
 
-int main() {
+int main(int argc, char *argv[]) {
     int loc = 0;
     glo = 0;
-    vfork();
+    if (argc == 1)
+        fork();
+    else
+        vfork();
     loc += 3;
     glo += 3;
     printf("Global: %i\nLocal: %i\n", glo, loc);
