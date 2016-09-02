@@ -34,7 +34,7 @@ echo "Using busy-wait:"
 time ./b
 echo
 echo " * Absolute time refers to real-time (actually) elapsed. Execution time is relative to the system clock."
-echo " * (...)"
+echo " * The two programs use different amount of time because one uses the OS and the other is programmed timing. (?)"
 echo
 read -p "Press ENTER to quit..."
 rm a b

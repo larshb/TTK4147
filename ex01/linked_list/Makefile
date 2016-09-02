@@ -2,7 +2,7 @@
 TARGET = exe
 
 # compiler flags
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -std=gnu99
 
 # linker flags
 LDFLAGS = -g
