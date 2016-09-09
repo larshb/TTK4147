@@ -9,11 +9,11 @@
 #define FOOD 100
 
 void *philosopher (void *id);
-void grab_chopstick (int, int, char*);
-void down_chopsticks (int, int);
+void grab_fork (int, int, char*);
+void down_forks (int, int);
 int food_on_table ();
 
-pthread_mutex_t chopstick[PHILOS];
+pthread_mutex_t forks[PHILOS];
 pthread_t philo[PHILOS];
 pthread_mutex_t food_lock;
 int sleep_seconds = 0;
@@ -29,7 +29,7 @@ int main (int argn, char **argv) {
 
     pthread_mutex_init (&food_lock, NULL);
     for (i = 0; i < PHILOS; i++)
-        pthread_mutex_init (&chopstick[i], NULL);
+        pthread_mutex_init (&forks[i], NULL);
     for (i = 0; i < PHILOS; i++)
         pthread_create (&philo[i], NULL, philosopher, (void *)i);
     for (i = 0; i < PHILOS; i++)
@@ -40,34 +40,29 @@ int main (int argn, char **argv) {
 void* philosopher (void *num)
 {
     int id;
-    int i, left_chopstick, right_chopstick, f;
+    int i, left_fork, right_fork, f;
 
     id = (int)num;
     printf ("Philosopher %d is done thinking and now ready to eat.\n", id);
-    right_chopstick = id;
-    left_chopstick = id + 1;
+    right_fork = id;
+    left_fork = id + 1;
 
-    /* Wrap around the chopsticks. */
-    if (left_chopstick == PHILOS)
-        left_chopstick = 0;
+    if (left_fork == PHILOS)
+        left_fork = 0;
 
     while (f = food_on_table ()) {
 
-        /* Thanks to philosophers #1 who would like to take a nap
-         * before picking up the chopsticks, the other philosophers
-         * may be able to eat their dishes and not deadlock.
-         */
         if (id == 1)
             sleep (sleep_seconds);
 
         sem_wait(&sem); //
-        grab_chopstick (id, right_chopstick, "right ");
-        grab_chopstick (id, left_chopstick, "left");
+        grab_fork (id, right_fork, "right");
+        grab_fork (id, left_fork, "left");
         sem_post(&sem); //
 
         printf ("Philosopher %d: eating.\n", id);
         usleep (DELAY * (FOOD - f + 1));
-        down_chopsticks (left_chopstick, right_chopstick);
+        down_forks (left_fork, right_fork);
     }
 
     printf ("Philosopher %d is done eating.\n", id);
@@ -87,12 +82,12 @@ int food_on_table () {
     return myfood;
 }
 
-void grab_chopstick (int phil, int c, char* hand) {
-    pthread_mutex_lock (&chopstick[c]);
-    printf ("Philosopher %d: got %s chopstick %d\n", phil, hand, c);
+void grab_fork (int phil, int c, char* hand) {
+    pthread_mutex_lock (&forks[c]);
+    printf ("Philosopher %d: got %s fork %d\n", phil, hand, c);
 }
 
-void down_chopsticks (int c1, int c2) {
-    pthread_mutex_unlock (&chopstick[c1]);
-    pthread_mutex_unlock (&chopstick[c2]);
+void down_forks (int c1, int c2) {
+    pthread_mutex_unlock (&forks[c1]);
+    pthread_mutex_unlock (&forks[c2]);
 }

@@ -1,9 +1,9 @@
 #!/bin/bash
 gcc -o fork fork.c
-gcc -pthread -o pthreads pthreads.c
-gcc -pthread -o semaphores semaphores.c
-gcc -pthread -o mutexes mutexes.c
-gcc -pthread -o din_philo din_philo.c
+gcc -std=c99 -pthread -o pthreads pthreads.c
+gcc -std=c99 -pthread -o semaphores semaphores.c
+gcc -std=c99 -pthread -o mutexes mutexes.c
+gcc -std=c99 -pthread -o din_philo din_philo.c
 clear
 echo "With fork():"
 ./fork
@@ -34,8 +34,8 @@ read -p "Press ENTER to continue..."
 clear
 timeout 5 ./din_philo
 echo
-echo " * The deadlock happens when all the philosophers picks up either a fork or a knife."
-echo " * I solved it using a semaphore allowing only 4 be picked up."
+echo " * The deadlock happens when all the philosophers picks up either a right fork or a left fork."
+echo " * I solved it using a semaphore allowing only 4 of the same side be picked up."
 echo " * Of course I can think of other methods(...)"
 echo
 read -p "Press ENTER to quit..."
